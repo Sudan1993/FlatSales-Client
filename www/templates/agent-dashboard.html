@@ -1,0 +1,50 @@
+<ion-view title="ManagerDashboard" align="center">
+    <!-- <ion-content style="background: url(img/login_background.jpg) center; background-size: cover;"> -->
+<br/><br/><br/>
+
+<div class="simpleDemo row">
+
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">AgentList</h3>
+                    </div>
+                    <ul dnd-list="list">
+                    <li ng-repeat="x in agentsList" ng-click="agentClicked(x)">
+                        {{x.label}}
+                    </li>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div ng-repeat="(listName, list) in models.lists" class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{listName}}</h3>
+                    </div>
+                    <ul dnd-list="list">
+                    <div ng-click="drop(event)"><li ng-repeat="item in list"
+                        dnd-draggable="item"
+                        dnd-moved="list.splice($index, 1)"
+                        dnd-effect-allowed="move"
+                        dnd-selected="models.selected = item"
+                        ng-class="{'selected': models.selected === item}"
+                        >
+                        {{item.label}}
+                    </li>
+                </div>
+                </ul>
+                </div>
+            </div>
+        </div>
+
+        <div view-source="simple"></div>
+
+    </div>
+
+</div>
+    </ion-content>
+</ion-view>
